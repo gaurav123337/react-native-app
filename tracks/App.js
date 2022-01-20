@@ -8,6 +8,8 @@ import TrackCreateScreen from './src/screens/TrackCreateScreen';
 import TrackDetailScreen from './src/screens/TrackDetailScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
 
+import { Provider as AuthProvider } from './src/context/AuthContext';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -36,7 +38,7 @@ function TrackListFlow() {
   );
 }
 
-export default function App() {
+function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator >
@@ -46,9 +48,7 @@ export default function App() {
             headerStyle: { backgroundColor: 'papayawhip' }
           }}
         >
-          <Stack.Screen options={{
-            headerShown: false
-          }} name="Signup" component={SignupScreen} />
+          <Stack.Screen name="Signup" component={SignupScreen} />
           <Stack.Screen name="Signin" component={SigninScreen} />
           <Stack.Screen name="mainFlow" component={MainFlow} />
         </Stack.Group>
@@ -65,3 +65,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default () => {
+  return (
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  )
+}
