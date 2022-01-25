@@ -46,7 +46,7 @@ function App() {
       <Stack.Navigator >
         <Stack.Group
           screenOptions={{
-            presentation: 'loginFlow',
+            //presentation: 'loginFlow',
             headerStyle: { backgroundColor: 'papayawhip' }
           }}
         >
