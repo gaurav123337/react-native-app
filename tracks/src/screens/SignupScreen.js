@@ -10,7 +10,7 @@ const SignupScreen = ({ navigation }) => {
   const {state, signup} = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  console.log(state);
+  console.log(state, 'Updated state');
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false

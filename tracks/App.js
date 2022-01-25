@@ -10,9 +10,11 @@ import TrackListScreen from './src/screens/TrackListScreen';
 
 import { Provider as AuthProvider } from './src/context/AuthContext';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer  } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import {setNavigator} from './src/navigationRef';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -40,7 +42,7 @@ function TrackListFlow() {
 
 function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={(navigator)=> {setNavigator(navigator)}}>
       <Stack.Navigator >
         <Stack.Group
           screenOptions={{
@@ -50,7 +52,7 @@ function App() {
         >
           <Stack.Screen name="Signup" component={SignupScreen} />
           <Stack.Screen name="Signin" component={SigninScreen} />
-          <Stack.Screen name="mainFlow" component={MainFlow} />
+          <Stack.Screen name="MainFlow" component={MainFlow} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
