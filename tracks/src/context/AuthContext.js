@@ -13,6 +13,8 @@ const authReducer = (state, action) => {
       return { errMessage: '', token: action.payload };
     case 'SIGNIN':
       return { errMessage: '', token: action.payload };
+    case 'SIGN_OUT':
+      return { errMessage: '', token: null };
     case 'CLEAR_ERROR_MESSAGE':
       return { ...state, errMessage: '' };
     default:
@@ -26,7 +28,7 @@ const tryLocalSignin = (dispatch) => async () => {
     dispatch({ type: 'SIGNIN', payload: token });
     navigate('MainFlow');
   } else {
-    navigate('Signp');
+    navigate('Signup');
   }
 };
 
@@ -77,8 +79,21 @@ const signin = (dispatch) => {
 };
 
 const signout = (dispatch) => {
-  return () => {
+  return async () => {
     // signout
+    try {
+      await AsyncStorage.removeItem('token');
+      // await AsyncStorage.getItem('token');
+      dispatch({ type: 'SIGN_OUT' });
+
+      //naviage to sign up flow
+      navigate('Signup');
+    } catch (err) {
+      dispatch({
+        type: 'ADD_ERROR',
+        payload: 'Something went wrong with my sign in',
+      });
+    }
   };
 };
 
