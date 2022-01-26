@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useContext } from 'react';
+import React, { useLayoutEffect, useContext, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import Spacer from '../components/Spacer';
@@ -7,7 +7,8 @@ import NavLink from '../components/NavLink';
 import { Context as AuthContext } from '../context/AuthContext';
 
 const SignupScreen = ({ navigation }) => {
-  const { state, signup } = useContext(AuthContext);
+  const { state, signup, clearErrorMessage } = useContext(AuthContext);
+  useEffect(() => navigation.addListener('focus', () => clearErrorMessage()));
 
   console.log(state, 'Updated state');
   useLayoutEffect(() => {
