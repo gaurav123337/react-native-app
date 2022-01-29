@@ -10,7 +10,7 @@ const SignupScreen = ({ navigation }) => {
   const { state, signup, clearErrorMessage } = useContext(AuthContext);
   useEffect(() => navigation.addListener('focus', () => clearErrorMessage()));
 
-  console.log(state, 'Updated state');
+  //console.log(state, 'Updated state');
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,

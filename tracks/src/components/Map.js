@@ -12,7 +12,7 @@ import { Context as LocationContext } from '../context/LocationContext';
 const Map = () => {
   const { state } = useContext(LocationContext);
 
-  console.log(state);
+  //console.log(state);
 
   if (!state.currentLocation) {
     return <ActivityIndicator size='large' style={{ marginTop: 200 }} />;
@@ -59,7 +59,7 @@ const Map = () => {
 const styles = StyleSheet.create({
   map: {
     width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height / 2,
+    height: Dimensions.get('window').height / 4,
   },
 });
 
