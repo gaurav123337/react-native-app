@@ -21,9 +21,10 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "foregroundImage": "./assets/tracking-speed-high.png",
+        "backgroundColor": "#888888"
+      },
+      "package": "com.garuda123.tracks"
     },
     "web": {
       "favicon": "./assets/favicon.png"
